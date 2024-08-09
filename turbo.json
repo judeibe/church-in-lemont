@@ -3,10 +3,18 @@
   "globalDependencies": [
     "**/.env.*local"
   ],
+  "globalEnv":["API_URL"],
   "tasks": {
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
     },
     "build": {
       "dependsOn": [
@@ -15,6 +23,13 @@
       "outputs": [
         ".next/**",
         "!.next/cache/**"
+      ],
+       "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
       ]
     },
     "lint": {},
